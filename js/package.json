@@ -1,0 +1,15 @@
+{
+  "name": "tf-low-level-mlp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Filip Skubacz",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@tensorflow/tfjs-node": "^2.0.1"
+  }
+}
