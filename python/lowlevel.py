@@ -55,7 +55,7 @@ class Model:
         probability = tf.nn.softmax(l2)
         # The label with the highest probability
         # our best guess
-        return tf.argmax(probability, axis=1)
+        return tf.argmax(probability, axis=1)[0]
 
     @tf.function
     def __measure_accuracy(self):

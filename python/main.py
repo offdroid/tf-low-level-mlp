@@ -14,7 +14,7 @@ from datetime import datetime
 
 # (Hyper)Parameters for training; these can be adjusted
 BATCH_SIZE = 32
-EPOCHS = 2
+EPOCHS = 4
 LEARNING_RATE = 0.1
 
 ds = dataset.dataset(BATCH_SIZE)
@@ -38,3 +38,15 @@ print()
 high = keras.Model(ds, LEARNING_RATE, TRAIN_STEPS, tensorboard_callback)
 print("Training high-level")
 high.train(EPOCHS)
+print()
+
+# Classify an image
+five = tf.reshape(
+    tf.image.decode_png(tf.io.read_file('../five.png'), channels=1), [1, 784])
+five = tf.divide(tf.dtypes.cast(five, tf.float32), 255)
+guess_low_level = low.predict(five)
+guess_high_level = high.predict(five)
+print(
+    f"Predictions:\nLow-level-> {guess_low_level}, " \
+    f"High-level-> {guess_high_level}"
+)
